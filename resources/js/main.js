@@ -56,7 +56,7 @@ function dataObjectUpdated() {
 function getFirstItem() {
     // Get first list item in the todo list
     var value = $("ul[list='todo1'] li").first().text();
-    console.log(value);
+    addItemToHome(value, 'todo1');
 }
 
 function removeItem() {
@@ -130,4 +130,18 @@ function addItemToDOM(text, completed) {
     item.appendChild(buttons);
 
     list.insertBefore(item, list.childNodes[0]);
+}
+
+function addItemToHome(text, list) {
+    var list = $("ul[list='todo1']");
+    var item = document.createElement('li');
+    item.innerText = text;
+
+    // Removes all other list items and replaces with new item
+    while (list.firstChild) {
+        list.removeChild(list.firstChild);
+    }
+
+    list.appendChild(item);
+
 }
