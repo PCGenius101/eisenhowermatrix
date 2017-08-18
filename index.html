@@ -31,24 +31,58 @@
         </button>
     </header>
 
+    <div id='slider' class='swipe'>
+        <div class='swipe-wrap'>
+            <div class="container">
+                <h3 class="listTitle">Do Now</h3>
 
-    <div class="container">
-        <h3 class="listTitle">Do Now</h3>
-
-        <!-- Uncompleted tasks -->
-        <ul class="todo" id="todo" list="todo1"></ul>
+                <!-- Uncompleted tasks -->
+                <ul class="todo" id="todo" list="todo1"></ul>
 
 
-        <!-- Completed tasks -->
-        <ul class="todo" id="completed" list="completed1"></ul>
+                <!-- Completed tasks -->
+                <ul class="todo" id="completed" list="completed1"></ul>
+            </div>
+            <div class="container">
+                <h3 class="listTitle">Do Later</h3>
+
+                <!-- Uncompleted tasks -->
+                <ul class="todo" id="todo" list="todo1"></ul>
+
+
+                <!-- Completed tasks -->
+                <ul class="todo" id="completed" list="completed1"></ul>
+            </div>
+        </div>
     </div>
 
-
-
+    <div id="left-arrow" style="font-size: 50px; position: absolute; left: 0%; top: 50%; z-index: 1000;" onclick="javascript:window.mySwipe.prev();">
+        &lt;
+    </div>
+    <div id="right-arrow" style="font-size: 50px; position: absolute; right: 0%; top: 50%; z-index: 1000;" onclick="javascript:window.mySwipe.next();">
+        &gt;
+    </div>
 
     <!-- JavaScripts -->
-    <script src="resources/js/main.js">
+    <script src="resources/js/main.js"></script>
+    <script src="resources/js/swipe.js"></script>
 
+    <!-- Setup Swipe.js -->
+    <script type="text/javascript">
+        var body = document.getElementsByTagName("body")[0];
+        var positions = [];
+        var currentPage = 0;
+
+        var cb = function(index, element) {
+            positions[currentPage] = body.scrollTop;
+            body.scrollTop = positions[index] || 0;
+            currentPage = index;
+        };
+
+        var mySwipe = Swipe(document.getElementById('slider'), {
+            callback: cb
+        });
+        mySwipe.setup();
 
     </script>
 </body>
