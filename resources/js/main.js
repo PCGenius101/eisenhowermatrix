@@ -30,8 +30,11 @@ function renderTodoList() {
     if (!data.todo.length && !data.completed.length) return;
 
     for (var i = 0; i < data.todo.length; i++) {
-        var value = data.todo[i];
-        addItemToDOM(value)
+        // Gets text and list number from data object
+        var value = data.todo[i].text;
+        var list = data.todo[i].listNumber;
+
+        addItemToDOM(value, false, list)
     }
 
     for (var j = 0; j < data.completed.length; j++) {
@@ -41,15 +44,28 @@ function renderTodoList() {
 }
 
 function addItem(value) {
-    addItemToDOM(value);
+    var currentPage = localStorage.getItem('page');
+    addItemToDOM(value, false, currentPage);
     document.getElementById('item').value = '';
 
-    data.todo.push(value);
+    data.todo.push({
+        text: value,
+        listNumber: currentPage
+    });
     dataObjectUpdated();
 }
 
 function dataObjectUpdated() {
     localStorage.setItem('todoList', JSON.stringify(data));
+}
+
+
+// Get the index of an object in the data array
+function arrayObjectIndexOf(myArray, searchTerm, property) {
+    for (var i = 0, len = myArray.length; i < len; i++) {
+        if (myArray[i][property] === searchTerm) return i;
+    }
+    return -1;
 }
 
 function removeItem() {
@@ -69,6 +85,7 @@ function removeItem() {
 }
 
 function completeItem() {
+    var currentPage = localStorage.getItem('page');
     var item = this.parentNode.parentNode;
     var parent = item.parentNode;
     var id = parent.id;
@@ -76,10 +93,16 @@ function completeItem() {
 
     if (id === 'todo') {
         data.todo.splice(data.todo.indexOf(value), 1);
-        data.completed.push(value);
+        data.completed.push({
+            text: value,
+            listNumber: currentPage
+        });
     } else {
         data.completed.splice(data.completed.indexOf(value), 1);
-        data.todo.push(value);
+        data.todo.push({
+            text: value,
+            listNumber: currentPage
+        });
     }
 
     dataObjectUpdated();
@@ -92,9 +115,38 @@ function completeItem() {
     target.insertBefore(item, target.childNodes[0]);
 }
 
+function returnList(listNumber, completed) {
+    var list;
+
+    // Return target list for addItemToDOM
+    if (listNumber == 0 && completed == false) {
+        list = document.getElementById('todo1');
+    } else if (listNumber == 0 && completed == true) {
+        list = document.getElementById('completed1');
+    } else if (listNumber == 1 && completed == false) {
+        list = document.getElementById('todo2');
+    } else if (listNumber == 1 && completed == true) {
+        list = document.getElementById('completed2');
+    } else if (listNumber == 2 && completed == false) {
+        list = document.getElementById('todo3');
+    } else if (listNumber == 2 && completed == true) {
+        list = document.getElementById('completed3');
+    } else if (listNumber == 3 && completed == false) {
+        list = document.getElementById('todo4');
+    } else if (listNumber == 3 && completed == true) {
+        list = document.getElementById('completed4');
+    } else {
+        console.log("It's broken. Yay!");
+    }
+
+    return list;
+}
+
 //Adds a new item to the todo list
-function addItemToDOM(text, completed) {
-    var list = (completed) ? document.getElementById('completed') : document.getElementById('todo');
+function addItemToDOM(text, completed, listNumber) {
+    //    var list = (completed) ? document.getElementById('completed') : document.getElementById('todo');
+
+    var list = returnList(listNumber, completed);
 
     var item = document.createElement('li');
     item.innerText = text;
