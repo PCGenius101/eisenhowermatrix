@@ -9,6 +9,7 @@ var completeSVG = '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:x
 var targetList;
 
 renderTodoList();
+initNav();
 
 // User clicked on add button
 // If there is any text inside the item field add that text to the todo list
@@ -26,6 +27,20 @@ document.getElementById('item').addEventListener('keydown', function (e) {
         addItem(value);
     }
 });
+
+function initNav() {
+    $("#dot1").css("background-color", "#888");
+}
+
+function changeNav(page) {
+    var currentDot = page + 1;
+
+    $(".dot").each(function () {
+        $(this).css("background-color", "#edf0f1");
+    });
+
+    $("#dot" + currentDot).css("background-color", "#888");
+}
 
 function renderTodoList() {
     if (!data.todo.length && !data.completed.length) return;

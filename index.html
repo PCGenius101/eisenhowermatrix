@@ -76,12 +76,12 @@
         </div>
     </div>
 
-    <div class="left-arrow" id="left-arrow" style="cursor: pointer; font-size: 50px; position: absolute; left: 5%; top: 70px; z-index: 1000;" onclick="javascript:window.mySwipe.prev();">
-        <svg width="20" height="30" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.71 37.61"><defs><style>.cls-1{fill:#707272;}</style></defs><title>back_icon</title><path id="Chevron_Right" data-name="Chevron Right" class="cls-1" d="M24.19,112.89L41.11,129.8a1.9,1.9,0,1,0,2.69-2.68L28.23,111.55,43.8,96a1.9,1.9,0,0,0-2.69-2.68L24.2,110.21A1.92,1.92,0,0,0,24.19,112.89Z" transform="translate(-23.65 -92.75)"/></svg>
-    </div>
-    <div class="right-arrow" id="right-arrow" style="cursor: pointer; font-size: 50px; position: absolute; right: 5%; top: 70px; z-index: 1000;" onclick="javascript:window.mySwipe.next();">
-        <svg width="20" height="30" id="Layer_1" class="fill" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.71 37.61"><defs><style>.cls-1{fill:#707272;}</style></defs><title>next_icon</title><path id="Chevron_Right" data-name="Chevron Right" class="cls-1" d="M394.8,109.66L377.89,92.75a1.9,1.9,0,1,0-2.69,2.68L390.77,111,375.2,126.56a1.9,1.9,0,1,0,2.69,2.68l16.91-16.91A1.92,1.92,0,0,0,394.8,109.66Z" transform="translate(-374.65 -92.2)"/></svg>
-    </div>
+    <ol>
+        <li id="dot1" class="dot" onclick="javascript:window.mySwipe.slide($('#dot1').index(), 1000)"></li>
+        <li id="dot2" class="dot" onclick="javascript:window.mySwipe.slide($('#dot2').index(), 1000)"></li>
+        <li id="dot3" class="dot" onclick="javascript:window.mySwipe.slide($('#dot3').index(), 1000)"></li>
+        <li id="dot4" class="dot" onclick="javascript:window.mySwipe.slide($('#dot4').index(), 1000)"></li>
+    </ol>
 
     <!-- JavaScripts -->
     <script src="resources/js/main.js"></script>
@@ -98,6 +98,7 @@
             body.scrollTop = positions[index] || 0;
             currentPage = index;
             localStorage.setItem('page', currentPage);
+            changeNav(currentPage);
         };
 
         var mySwipe = Swipe(document.getElementById('slider'), {
