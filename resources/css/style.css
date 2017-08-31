@@ -38,12 +38,6 @@ body {
 }
 */
 
-h3.title {
-    font-size: 22px;
-    font-weight: 500;
-    text-align: center;
-}
-
 h3.listTitle {
     font-size: 19px;
     font-weight: 500;
@@ -111,7 +105,7 @@ header input:-ms-input-placeholder {
     color: rgba(255, 255, 255, 0.75)
 }
 
-header button {
+header button.add {
     width: 50px;
     height: 50px;
     position: absolute;
@@ -126,7 +120,7 @@ header button {
     cursor: pointer;
 }
 
-header button svg {
+header button.add svg {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -135,7 +129,7 @@ header button svg {
     margin: -8px 0 0 -8px;
 }
 
-header button svg .fill {
+header button.add svg .fill {
     fill: #25b99a;
 }
 
@@ -146,17 +140,6 @@ header button svg .fill {
 }
 
 ul.todo {
-    width: 100%;
-    float: left;
-}
-
-ul.title {
-    width: 100%;
-    float: left;
-    text-align: center;
-}
-
-ul.item {
     width: 100%;
     float: left;
 }
@@ -181,44 +164,6 @@ ul.todo li {
 ul.todo#todo li {
     margin-top: 21px;
     margin-bottom: -8px;
-}
-
-ul.item li {
-    width: 100%;
-    top: -15px;
-    min-height: 50px;
-    float: left;
-    font-size: 14px;
-    font-weight: 500;
-    color: #444;
-    line-height: 22px;
-    height: 50px;
-    background: #fff;
-    border-radius: 5px;
-    position: relative;
-    box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
-    margin: 0 0 10px 0;
-    padding: 14px 100px 0 14px;
-    z-index: 0;
-}
-
-ul.title li {
-    width: 100%;
-    min-height: 50px;
-    float: left;
-    font-size: 22px;
-    font-weight: 500;
-    color: #444;
-    line-height: 22px;
-    height: 55px;
-    background: #fff;
-    border-radius: 5px;
-    position: relative;
-    box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
-    margin: 0 0 10px 0;
-    padding: 15px 100px 15px;
-    text-align: center;
-    z-index: 1;
 }
 
 ul.todo li:last-of-type {

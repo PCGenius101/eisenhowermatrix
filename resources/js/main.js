@@ -28,6 +28,7 @@ document.getElementById('item').addEventListener('keydown', function (e) {
     }
 });
 
+// Set nav dots to first page
 function initNav() {
     $("#dot1").css("background-color", "#888");
 }
