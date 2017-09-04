@@ -7,7 +7,7 @@ body {
 body,
 input,
 button {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .swipe {
@@ -40,10 +40,10 @@ body {
 
 h3.listTitle {
     font-size: 19px;
-    font-weight: 500;
+    font-weight: 400;
     color: #707272;
     text-align: center;
-    text-shadow: 0px 1px 2px rgba(44, 62, 80, 0.20);
+    text-shadow: 0px 1px 2px rgba(44, 62, 80, 0.10);
     margin-top: -7px;
 }
 
@@ -170,8 +170,47 @@ ul.todo li:last-of-type {
     margin: 0;
 }
 
+ul.todo li p {
+    position: relative;
+    left: 27px;
+}
+
+ul.todo li .options {
+    width: 125px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+ul.todo li .options button {
+    bottom: 17px;
+    padding-bottom: 11px;
+    font-weight: 300;
+    font-size: 10px;
+    position: absolute;
+    z-index: 2;
+    border-radius: 7px;
+    background: #5bb7a1;
+    border: 0px;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+ul.todo li .options button.important {
+    width: 60px;
+    height: 15px;
+}
+
+ul.todo li .options button.urgent {
+    width: 45px;
+    height: 15px;
+    right: 10px;
+}
+
 ul.todo li .buttons {
-    width: 100px;
+    width: 50px;
     height: 50px;
     position: absolute;
     top: 0;
@@ -181,6 +220,7 @@ ul.todo li .buttons {
 ul.todo li .buttons button {
     width: 50px;
     height: 50px;
+    right: 352px;
     float: left;
     background: none;
     position: relative;
@@ -195,13 +235,13 @@ ul.todo li .buttons button {
     appearance: none;
 }
 
-ul.todo li .buttons button:last-of-type:before {
+ul.todo li .options button:last-of-type:before {
     content: '';
     width: 1px;
     height: 30px;
     position: absolute;
-    top: 10px;
-    left: 0;
+    top: -5px;
+    left: -5px;
     background: #edf0f1;
 }
 
@@ -249,6 +289,8 @@ ul.todo li .buttons button svg .fill {
     transition: fill 0.2s ease;
 }
 
+
+/*
 ul.todo li .buttons button.remove svg .fill {
     fill: #c0cecb;
 }
@@ -256,6 +298,8 @@ ul.todo li .buttons button.remove svg .fill {
 ul.todo li .buttons button.remove:hover svg .fill {
     fill: #e85656;
 }
+
+*/
 
 ul.todo li .buttons button.complete svg .fill {
     fill: #25b99a;
